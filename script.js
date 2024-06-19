@@ -8,12 +8,12 @@ ctx.canvas.width  = 0;
 ctx.canvas.height = 0;
 
 const bodyParts = [
-    [4,2,1,1],
-    [4,3,1,2],
-    [3,5,1,1],
-    [5,5,1,1],
-    [3,3,1,1],
-    [5,3,1,1]
+    [4, 2, 1, 1],
+    [4, 3, 1, 2],
+    [3, 5, 1, 1],
+    [5, 5, 1, 1],
+    [3, 3, 1, 1],
+    [5, 3, 1, 1]
 ];
 
 let selectedWord;
@@ -25,7 +25,7 @@ const addLetter = letter => {
     const letterElement = document.createElement('span');
     letterElement.innerHTML = letter.toUpperCase();
     usedLettersElement.appendChild(letterElement);
-}
+};
 
 const addBodyPart = bodyPart => {
     ctx.fillStyle = '#fff';
@@ -35,27 +35,27 @@ const addBodyPart = bodyPart => {
 const wrongLetter = () => {
     addBodyPart(bodyParts[mistakes]);
     mistakes++;
-    if(mistakes === bodyParts.length) endGame();
-}
+    if (mistakes === bodyParts.length) endGame();
+};
 
 const endGame = () => {
     document.removeEventListener('keydown', letterEvent);
     startButton.style.display = 'block';
-}
+};
 
 const correctLetter = letter => {
-    const { children } =  wordContainer;
-    for(let i = 0; i < children.length; i++) {
-        if(children[i].innerHTML === letter) {
+    const { children } = wordContainer;
+    for (let i = 0; i < children.length; i++) {
+        if (children[i].innerHTML === letter) {
             children[i].classList.toggle('hidden');
             hits++;
         }
     }
-    if(hits === selectedWord.length) endGame();
-}
+    if (hits === selectedWord.length) endGame();
+};
 
 const letterInput = letter => {
-    if(selectedWord.includes(letter)) {
+    if (selectedWord.includes(letter)) {
         correctLetter(letter);
     } else {
         wrongLetter();
@@ -66,9 +66,9 @@ const letterInput = letter => {
 
 const letterEvent = event => {
     let newLetter = event.key.toUpperCase();
-    if(newLetter.match(/^[a-zñ]$/i) && !usedLetters.includes(newLetter)) {
+    if (newLetter.match(/^[A-ZÑ]$/i) && !usedLetters.includes(newLetter)) {
         letterInput(newLetter);
-    };
+    }
 };
 
 const drawWord = () => {
@@ -87,7 +87,7 @@ const selectRandomWord = () => {
 };
 
 const drawHangMan = () => {
-    ctx.canvas.width  = 120;
+    ctx.canvas.width = 120;
     ctx.canvas.height = 160;
     ctx.scale(20, 20);
     ctx.clearRect(0, 0, canvas.width, canvas.height);

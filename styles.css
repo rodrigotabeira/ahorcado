@@ -10,6 +10,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
 }
 
 #wordContainer {
@@ -22,7 +27,7 @@ body {
     text-align: center;
 }
 
-.letter::after{
+.letter::after {
     content: ' ';
     display: block;
     position: absolute;
@@ -38,7 +43,8 @@ body {
     appearance: none;
     font-family: 'SF Pixelate', sans-serif;
     border: none;
-    width: 300px;
+    width: 80%;
+    max-width: 300px;
     padding: 10px;
     background: #d95d39;
     color: #fff;
@@ -46,4 +52,22 @@ body {
     font-size: 20px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+canvas {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .letter {
+        margin: 0 5px;
+    }
+
+    #startButton {
+        font-size: 18px;
+        padding: 8px;
+    }
 }
