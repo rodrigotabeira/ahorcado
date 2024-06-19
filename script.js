@@ -1,6 +1,7 @@
 const wordContainer = document.getElementById('wordContainer');
 const startButton = document.getElementById('startButton');
 const usedLettersElement = document.getElementById('usedLetters');
+const hiddenInput = document.getElementById('hiddenInput');
 
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
@@ -41,6 +42,7 @@ const wrongLetter = () => {
 const endGame = () => {
     document.removeEventListener('keydown', letterEvent);
     startButton.style.display = 'block';
+    hiddenInput.blur();
 };
 
 const correctLetter = letter => {
@@ -109,6 +111,7 @@ const startGame = () => {
     selectRandomWord();
     drawWord();
     document.addEventListener('keydown', letterEvent);
+    hiddenInput.focus();
 };
 
 startButton.addEventListener('click', startGame);
